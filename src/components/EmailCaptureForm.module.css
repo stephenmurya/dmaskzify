@@ -1,0 +1,63 @@
+.form {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.label {
+  color: var(--text-faint);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-s);
+  min-height: 2.8rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-main);
+}
+
+.field input::placeholder {
+  color: var(--text-faint);
+}
+
+.field input:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent-violet), white 8%);
+  outline-offset: 2px;
+}
+
+.message {
+  color: var(--accent-lime);
+  font-size: 0.84rem;
+}
+
+.error {
+  color: #f18874;
+}
+
+.compact {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.compact .field {
+  margin-bottom: 0;
+}
+
+.compact .message {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 620px) {
+  .compact {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,64 @@
+.header {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 68ch;
+}
+
+.layout {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: 1rem;
+  display: grid;
+  gap: 0.65rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.card h2 {
+  font-size: clamp(1.7rem, 3.8vw, 2.4rem);
+}
+
+.card p {
+  color: var(--text-soft);
+}
+
+.card a {
+  color: var(--accent-fire);
+}
+
+.small {
+  font-size: 0.87rem;
+  color: var(--text-faint);
+}
+
+.alertCard {
+  margin-top: 0.6rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 0.85rem;
+  display: grid;
+  gap: 0.45rem;
+  background:
+    radial-gradient(
+      14rem 9rem at 6% 0%,
+      rgba(222, 90, 42, 0.16) 0%,
+      rgba(222, 90, 42, 0) 76%
+    ),
+    rgba(255, 255, 255, 0.02);
+}
+
+.alertCard h3 {
+  font-size: 1.45rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

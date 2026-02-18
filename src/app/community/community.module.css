@@ -1,0 +1,173 @@
+.heroTitle {
+  max-width: 14ch;
+}
+
+.creativesGrid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.creativeCard {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.creativeImage {
+  min-height: 13rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.creativeBody {
+  padding: 0.95rem;
+  display: grid;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.creativeBody h3 {
+  font-size: 1.5rem;
+}
+
+.creativeBody p {
+  color: var(--text-soft);
+}
+
+.eventsLayout {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.eventColumn {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.eventColumn h3 {
+  font-size: 1.7rem;
+}
+
+.eventItem {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.eventItem p {
+  color: var(--text-faint);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.eventItem h4 {
+  margin: 0;
+  font-family: var(--font-headline), sans-serif;
+  font-size: 1.4rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.eventItem small {
+  color: var(--text-soft);
+}
+
+.storyGrid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.storyCard {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  background:
+    radial-gradient(
+      15rem 10rem at 5% 0%,
+      rgba(134, 112, 190, 0.16) 0%,
+      rgba(134, 112, 190, 0) 76%
+    ),
+    rgba(255, 255, 255, 0.02);
+}
+
+.storyCard h3 {
+  font-size: 1.45rem;
+}
+
+.storyCard p {
+  color: var(--text-soft);
+}
+
+.fanGrid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.fanCard {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.fanImage {
+  min-height: 16rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.fanCard h3 {
+  padding: 0.85rem 1rem 1rem;
+  font-size: 1.45rem;
+}
+
+.submissionLink {
+  margin-top: 1rem;
+  display: inline-block;
+  color: var(--accent-fire);
+  font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+  .creativesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .eventsLayout,
+  .fanGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .creativesGrid {
+    grid-template-columns: 1fr;
+  }
+}

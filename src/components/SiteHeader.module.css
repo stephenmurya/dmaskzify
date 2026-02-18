@@ -1,0 +1,232 @@
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 60;
+  width: 100%;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(11, 12, 16, 0.78);
+  backdrop-filter: blur(16px);
+}
+
+.inner {
+  display: flex;
+  height: var(--header-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text-main);
+}
+
+.brandMark {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 0.38rem;
+  background: linear-gradient(
+    145deg,
+    var(--accent-fire) 0%,
+    color-mix(in srgb, var(--accent-fire), #fff 15%) 100%
+  );
+}
+
+.brandName {
+  font-family: var(--font-headline), sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.07em;
+}
+
+.nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navLink {
+  padding: 0.45rem 0.72rem;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-size: 0.89rem;
+  font-weight: 650;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.navLink:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.active {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hamburger {
+  display: none;
+  position: relative;
+  z-index: 82;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 0.72rem;
+  background: rgba(255, 255, 255, 0.03);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hamburger span {
+  position: absolute;
+  width: 1.15rem;
+  height: 0.1rem;
+  border-radius: 999px;
+  background: var(--text-main);
+  transition: transform 200ms ease;
+}
+
+.hamburger span:nth-child(1) {
+  transform: translateY(-0.32rem);
+}
+
+.hamburger span:nth-child(2) {
+  transform: translateY(0);
+}
+
+.hamburger span:nth-child(3) {
+  transform: translateY(0.32rem);
+}
+
+.hamburgerOpen span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  transform: scaleX(0);
+}
+
+.hamburgerOpen span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  padding: calc(var(--header-height) + 1.4rem) min(6vw, 1.6rem) 1.2rem;
+  display: grid;
+  align-content: space-between;
+  gap: 1rem;
+  background: #07080c;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  pointer-events: auto;
+  background: #07080c;
+}
+
+.mobileNav {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mobileNavLink {
+  font-family: var(--font-headline), sans-serif;
+  font-size: clamp(2rem, 11vw, 3.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  width: fit-content;
+}
+
+.mobileNavLinkActive {
+  color: var(--text-main);
+}
+
+.mobileFooter {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.mobileStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.liveStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--accent-lime), transparent 58%);
+  border-radius: 999px;
+  padding: 0.35rem 0.72rem;
+  color: var(--text-main);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.listenButton {
+  border-radius: 0.72rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--accent-fire), transparent 45%);
+  background: color-mix(in srgb, var(--accent-fire), transparent 85%);
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 750;
+  white-space: nowrap;
+  transition:
+    transform 200ms ease,
+    filter 200ms ease;
+}
+
+.listenButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 900px) {
+  .inner {
+    gap: 0.75rem;
+  }
+
+  .brandName {
+    font-size: 1.15rem;
+  }
+
+  .nav,
+  .actions {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobileMenu {
+    display: none;
+  }
+}

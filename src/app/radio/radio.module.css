@@ -1,0 +1,239 @@
+.heroTitle {
+  max-width: 15ch;
+}
+
+.liveModule {
+  margin-top: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.45rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.liveModuleHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.statusTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.statusCopy {
+  color: var(--text-soft);
+}
+
+.embedWrap iframe {
+  width: 100%;
+  min-height: 20rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  background: #0a0b10;
+}
+
+.previewBlock {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+  min-height: 14rem;
+  display: grid;
+  place-content: center;
+  gap: 0.35rem;
+  text-align: center;
+  padding: 1rem;
+  background:
+    radial-gradient(
+      18rem 10rem at 14% 8%,
+      rgba(222, 90, 42, 0.14) 0%,
+      rgba(222, 90, 42, 0) 72%
+    ),
+    radial-gradient(
+      18rem 10rem at 84% 12%,
+      rgba(121, 209, 90, 0.13) 0%,
+      rgba(121, 209, 90, 0) 74%
+    ),
+    rgba(255, 255, 255, 0.02);
+}
+
+.previewBlock h2 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.previewBlock p {
+  color: var(--text-dim);
+}
+
+.ctaStack {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 25rem;
+}
+
+.browserFallback {
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--text-soft), transparent 45%);
+}
+
+.caption {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.nextShow {
+  color: var(--accent-lime);
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.scheduleTable {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.scheduleRow {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 0.85rem 0.95rem;
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.7fr) minmax(0, 1fr) minmax(10rem, auto) auto;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.scheduleDay {
+  color: var(--text-main);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+}
+
+.scheduleRow h3 {
+  font-size: 1.45rem;
+}
+
+.scheduleRow p {
+  color: var(--text-dim);
+}
+
+.scheduleTime {
+  color: var(--text-soft);
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.flagship {
+  border-color: color-mix(in srgb, var(--accent-fire), transparent 50%);
+  background: rgba(222, 90, 42, 0.06);
+}
+
+.flagshipTag {
+  border: 1px solid color-mix(in srgb, var(--accent-fire), transparent 42%);
+  color: #f6ac8f;
+  border-radius: 999px;
+  padding: 0.22rem 0.58rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.replayGrid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.replayCard {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 1rem;
+  display: grid;
+  gap: 0.4rem;
+  background:
+    radial-gradient(
+      13rem 10rem at 8% 0%,
+      rgba(134, 112, 190, 0.16) 0%,
+      rgba(134, 112, 190, 0) 75%
+    ),
+    rgba(255, 255, 255, 0.02);
+}
+
+.replayCard h3 {
+  font-size: 1.45rem;
+}
+
+.replayCard p {
+  color: var(--text-soft);
+}
+
+.replayCard small {
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.notifyCard {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: clamp(1rem, 2.8vw, 1.45rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.75fr);
+  gap: 1rem;
+  align-items: end;
+  background:
+    radial-gradient(
+      17rem 12rem at 10% 0%,
+      rgba(222, 90, 42, 0.17) 0%,
+      rgba(222, 90, 42, 0) 76%
+    ),
+    rgba(255, 255, 255, 0.02);
+}
+
+.notifyCard h2 {
+  margin-top: 0.4rem;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+}
+
+.notifyCard p {
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .scheduleRow {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .scheduleTime {
+    text-align: left;
+  }
+
+  .replayGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .notifyCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .replayGrid {
+    grid-template-columns: 1fr;
+  }
+}

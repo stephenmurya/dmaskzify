@@ -1,0 +1,378 @@
+.heroSection {
+  padding-top: clamp(3.2rem, 9vw, 6rem);
+}
+
+.heroContent {
+  display: grid;
+  gap: 1rem;
+  max-width: 74ch;
+}
+
+.heroTitle {
+  max-width: 14ch;
+  font-size: clamp(3rem, 10vw, 7.4rem);
+  line-height: 0.89;
+}
+
+.heroAccent {
+  color: var(--accent-fire);
+}
+
+.heroCopy {
+  max-width: 58ch;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 2.2vw, 1.24rem);
+}
+
+.heroActions {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.liveCard {
+  margin-top: clamp(1.5rem, 4vw, 2.4rem);
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.liveHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.liveTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--accent-lime), transparent 58%);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.liveMeta {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.liveBody {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.1rem;
+}
+
+.liveShow h2 {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.liveShow p {
+  color: var(--text-dim);
+  max-width: 50ch;
+}
+
+.stationheadActions {
+  min-width: 16rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.fallbackLink {
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--text-soft), transparent 45%);
+}
+
+.liveFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.7rem;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 0.85rem;
+}
+
+.liveFooter p {
+  color: var(--text-faint);
+  font-size: 0.84rem;
+}
+
+.liveFooter a {
+  color: var(--accent-lime);
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.splitCard {
+  min-height: 20rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: clamp(1.2rem, 2.8vw, 1.8rem);
+  display: grid;
+  align-content: end;
+  gap: 0.65rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.splitCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 9, 12, 0.1) 0%,
+    rgba(8, 9, 12, 0.86) 78%
+  );
+}
+
+.splitCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.radioPanel {
+  background:
+    radial-gradient(
+      18rem 15rem at 75% 10%,
+      rgba(222, 90, 42, 0.28) 0%,
+      rgba(222, 90, 42, 0) 72%
+    ),
+    url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80")
+      center/cover;
+}
+
+.backstagePanel {
+  background:
+    radial-gradient(
+      18rem 15rem at 20% 10%,
+      rgba(134, 112, 190, 0.35) 0%,
+      rgba(134, 112, 190, 0) 74%
+    ),
+    url("https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80")
+      center/cover;
+}
+
+.splitIcon {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  padding: 0.27rem 0.58rem;
+  color: var(--text-soft);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.splitCard h2 {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+.splitCard p {
+  color: var(--text-soft);
+  max-width: 34ch;
+}
+
+.splitCard a {
+  margin-top: 0.5rem;
+  color: var(--accent-fire);
+  font-weight: 750;
+}
+
+.artistGrid {
+  margin-top: 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.artistCard {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease;
+}
+
+.artistCard:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent-fire), transparent 60%);
+}
+
+.artistImage {
+  aspect-ratio: 1 / 0.9;
+  background-size: cover;
+  background-position: center;
+}
+
+.artistBody {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem;
+}
+
+.artistVibe {
+  width: fit-content;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  padding: 0.14rem 0.5rem;
+  color: var(--text-dim);
+  font-size: 0.69rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.artistBody h3 {
+  font-size: 1.6rem;
+}
+
+.artistBody p {
+  color: var(--text-soft);
+  font-size: 0.91rem;
+}
+
+.artistBody small {
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.communityGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.communityCard {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.communityImage {
+  min-height: 15rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.communityBody {
+  padding: 1rem 1rem 1.15rem;
+  display: grid;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.communityBody h3 {
+  font-size: 1.5rem;
+}
+
+.communityBody p {
+  color: var(--text-soft);
+  font-size: 0.93rem;
+}
+
+.merchCard,
+.cultureFooter {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-l);
+  padding: clamp(1rem, 2.7vw, 1.55rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
+  gap: 1rem;
+  align-items: end;
+}
+
+.merchCard {
+  background:
+    radial-gradient(
+      18rem 12rem at 10% 0%,
+      rgba(222, 90, 42, 0.2) 0%,
+      rgba(222, 90, 42, 0) 76%
+    ),
+    rgba(255, 255, 255, 0.02);
+}
+
+.cultureFooter {
+  background:
+    radial-gradient(
+      18rem 12rem at 10% 0%,
+      rgba(134, 112, 190, 0.2) 0%,
+      rgba(134, 112, 190, 0) 76%
+    ),
+    rgba(255, 255, 255, 0.02);
+}
+
+.merchCard h2,
+.cultureFooter h2 {
+  margin-top: 0.4rem;
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+}
+
+.merchCard p,
+.cultureFooter p {
+  color: var(--text-soft);
+}
+
+.merchForm,
+.cultureForm {
+  align-self: stretch;
+}
+
+@media (max-width: 1024px) {
+  .artistGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .communityGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .liveBody {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stationheadActions {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .splitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .merchCard,
+  .cultureFooter {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .artistGrid,
+  .communityGrid {
+    grid-template-columns: 1fr;
+  }
+}
