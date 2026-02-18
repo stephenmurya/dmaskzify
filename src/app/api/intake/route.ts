@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { NextResponse } from "next/server";
 
@@ -44,7 +45,16 @@ type WebhookPayload = {
   source: string | null;
 };
 
-const intakeFilePath = path.join(process.cwd(), "data", "intake-submissions.json");
+const primaryIntakeFilePath = path.join(
+  process.cwd(),
+  "data",
+  "intake-submissions.json",
+);
+const fallbackIntakeFilePath = path.join(
+  tmpdir(),
+  "dmaskzify",
+  "intake-submissions.json",
+);
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -96,20 +106,32 @@ function validatePayload(input: unknown): IntakePayload | null {
   return output;
 }
 
-async function saveRecord(record: IntakeRecord) {
-  const directory = path.dirname(intakeFilePath);
+async function saveRecordToPath(record: IntakeRecord, filePath: string) {
+  const directory = path.dirname(filePath);
   await mkdir(directory, { recursive: true });
 
   let current: IntakeRecord[] = [];
   try {
-    const content = await readFile(intakeFilePath, "utf8");
+    const content = await readFile(filePath, "utf8");
     current = JSON.parse(content) as IntakeRecord[];
   } catch {
     current = [];
   }
 
   current.push(record);
-  await writeFile(intakeFilePath, JSON.stringify(current, null, 2), "utf8");
+  await writeFile(filePath, JSON.stringify(current, null, 2), "utf8");
+}
+
+async function saveRecord(record: IntakeRecord) {
+  try {
+    await saveRecordToPath(record, primaryIntakeFilePath);
+  } catch (primaryError) {
+    console.error(
+      "Primary intake file write failed. Trying tmp fallback.",
+      primaryError,
+    );
+    await saveRecordToPath(record, fallbackIntakeFilePath);
+  }
 }
 
 function toWebhookFormType(type: IntakeType): WebhookFormType {
@@ -193,14 +215,10 @@ export async function POST(request: Request) {
 
   try {
     await saveRecord(record);
-    await forwardToWebhook(record);
   } catch (error) {
-    console.error("Intake processing failed", error);
-    return NextResponse.json(
-      { message: "Unable to process submission right now. Please try again." },
-      { status: 500 },
-    );
+    console.error("Local intake storage failed", error);
   }
+  await forwardToWebhook(record);
 
   if (payload.type === "artist_submission") {
     return NextResponse.json({
