@@ -2,6 +2,11 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
 
+/**
+ * Local JSON storage remains the primary intake record.
+ * Google Sheets forwarding (via Apps Script webhook) is a secondary pathway.
+ * This provides lightweight CRM tracking without introducing a database.
+ */
 export const runtime = "nodejs";
 
 type IntakeType =
@@ -16,10 +21,27 @@ type IntakePayload = {
   name?: string;
   genre?: string;
   links?: string;
+  source?: string;
 };
 
 type IntakeRecord = IntakePayload & {
   submittedAt: string;
+};
+
+type WebhookFormType =
+  | "newsletter"
+  | "live_alert"
+  | "merch_alert"
+  | "artist_submission";
+
+type WebhookPayload = {
+  formType: WebhookFormType;
+  timestamp: string;
+  name: string | null;
+  email: string;
+  genre: string | null;
+  links: string | null;
+  source: string | null;
 };
 
 const intakeFilePath = path.join(process.cwd(), "data", "intake-submissions.json");
@@ -61,6 +83,9 @@ function validatePayload(input: unknown): IntakePayload | null {
   if (typeof payload.links === "string") {
     output.links = payload.links;
   }
+  if (typeof payload.source === "string") {
+    output.source = payload.source;
+  }
 
   if (output.type === "artist_submission") {
     if (!output.name || !output.genre || !output.links) {
@@ -87,20 +112,57 @@ async function saveRecord(record: IntakeRecord) {
   await writeFile(intakeFilePath, JSON.stringify(current, null, 2), "utf8");
 }
 
+function toWebhookFormType(type: IntakeType): WebhookFormType {
+  if (type === "live_notifications") {
+    return "live_alert";
+  }
+  return type;
+}
+
+function toWebhookPayload(record: IntakeRecord): WebhookPayload {
+  return {
+    formType: toWebhookFormType(record.type),
+    timestamp: record.submittedAt,
+    name: record.name ?? null,
+    email: record.email,
+    genre: record.genre ?? null,
+    links: record.links ?? null,
+    source: record.source ?? null,
+  };
+}
+
 async function forwardToWebhook(record: IntakeRecord) {
   const webhookUrl = process.env.INTAKE_WEBHOOK_URL;
   if (!webhookUrl) {
     return;
   }
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, 5000);
+
   try {
-    await fetch(webhookUrl, {
+    const response = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(record),
+      body: JSON.stringify(toWebhookPayload(record)),
+      signal: controller.signal,
     });
-  } catch {
-    // Persisting locally is the primary path for Phase 1.
+
+    if (!response.ok) {
+      console.error(
+        `Intake webhook failed with status ${response.status} ${response.statusText}`,
+      );
+    }
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      console.error("Intake webhook timed out after 5000ms");
+    } else {
+      console.error("Intake webhook request failed", error);
+    }
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
