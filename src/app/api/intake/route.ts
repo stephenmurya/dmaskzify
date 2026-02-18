@@ -167,7 +167,16 @@ async function forwardToWebhook(record: IntakeRecord) {
 }
 
 export async function POST(request: Request) {
-  const body = (await request.json()) as unknown;
+  let body: unknown;
+  try {
+    body = (await request.json()) as unknown;
+  } catch {
+    return NextResponse.json(
+      { message: "Invalid JSON request body." },
+      { status: 400 },
+    );
+  }
+
   const payload = validatePayload(body);
 
   if (!payload) {
@@ -182,8 +191,16 @@ export async function POST(request: Request) {
     submittedAt: new Date().toISOString(),
   };
 
-  await saveRecord(record);
-  await forwardToWebhook(record);
+  try {
+    await saveRecord(record);
+    await forwardToWebhook(record);
+  } catch (error) {
+    console.error("Intake processing failed", error);
+    return NextResponse.json(
+      { message: "Unable to process submission right now. Please try again." },
+      { status: 500 },
+    );
+  }
 
   if (payload.type === "artist_submission") {
     return NextResponse.json({

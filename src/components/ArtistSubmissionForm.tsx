@@ -30,9 +30,21 @@ export function ArtistSubmissionForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const result = (await response.json()) as { message?: string };
+      const raw = await response.text();
+      let result: { message?: string } = {};
+      if (raw) {
+        try {
+          result = JSON.parse(raw) as { message?: string };
+        } catch {
+          result = {};
+        }
+      }
+
       if (!response.ok) {
-        throw new Error(result.message ?? "Unable to send submission.");
+        throw new Error(
+          result.message ??
+            `Unable to send submission. Request failed (${response.status}).`,
+        );
       }
 
       setStatus("success");

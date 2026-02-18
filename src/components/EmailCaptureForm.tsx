@@ -38,9 +38,21 @@ export function EmailCaptureForm({
         body: JSON.stringify({ type, email }),
       });
 
-      const payload = (await response.json()) as { message?: string };
+      const raw = await response.text();
+      let payload: { message?: string } = {};
+      if (raw) {
+        try {
+          payload = JSON.parse(raw) as { message?: string };
+        } catch {
+          payload = {};
+        }
+      }
+
       if (!response.ok) {
-        throw new Error(payload.message ?? "Unable to save email.");
+        throw new Error(
+          payload.message ??
+            `Unable to save email. Request failed (${response.status}).`,
+        );
       }
 
       setStatus("success");
