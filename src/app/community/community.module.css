@@ -100,8 +100,8 @@
   background:
     radial-gradient(
       15rem 10rem at 5% 0%,
-      rgba(134, 112, 190, 0.16) 0%,
-      rgba(134, 112, 190, 0) 76%
+      rgba(44, 160, 0, 0.16) 0%,
+      rgba(44, 160, 0, 0) 76%
     ),
     rgba(255, 255, 255, 0.02);
 }
@@ -171,3 +171,4 @@
     grid-template-columns: 1fr;
   }
 }
+

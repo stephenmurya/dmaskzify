@@ -152,8 +152,8 @@
   background:
     radial-gradient(
       18rem 15rem at 75% 10%,
-      rgba(222, 90, 42, 0.28) 0%,
-      rgba(222, 90, 42, 0) 72%
+      rgba(44, 160, 0, 0.28) 0%,
+      rgba(44, 160, 0, 0) 72%
     ),
     url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80")
       center/cover;
@@ -163,8 +163,8 @@
   background:
     radial-gradient(
       18rem 15rem at 20% 10%,
-      rgba(134, 112, 190, 0.35) 0%,
-      rgba(134, 112, 190, 0) 74%
+      rgba(44, 160, 0, 0.35) 0%,
+      rgba(44, 160, 0, 0) 74%
     ),
     url("https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80")
       center/cover;
@@ -307,8 +307,8 @@
   background:
     radial-gradient(
       18rem 12rem at 10% 0%,
-      rgba(222, 90, 42, 0.2) 0%,
-      rgba(222, 90, 42, 0) 76%
+      rgba(44, 160, 0, 0.2) 0%,
+      rgba(44, 160, 0, 0) 76%
     ),
     rgba(255, 255, 255, 0.02);
 }
@@ -317,8 +317,8 @@
   background:
     radial-gradient(
       18rem 12rem at 10% 0%,
-      rgba(134, 112, 190, 0.2) 0%,
-      rgba(134, 112, 190, 0) 76%
+      rgba(44, 160, 0, 0.2) 0%,
+      rgba(44, 160, 0, 0) 76%
     ),
     rgba(255, 255, 255, 0.02);
 }
@@ -376,3 +376,4 @@
     grid-template-columns: 1fr;
   }
 }
+

@@ -10,9 +10,9 @@
   --text-dim: #9a968f;
   --text-faint: #75716a;
 
-  --accent-fire: #de5a2a;
-  --accent-lime: #79d15a;
-  --accent-violet: #8670be;
+  --accent-fire: #2ca000;
+  --accent-lime: #2ca000;
+  --accent-violet: #2ca000;
 
   --shadow-soft: 0 20px 45px rgba(3, 4, 7, 0.4);
   --radius-l: 1.35rem;
@@ -60,18 +60,18 @@ body::before {
   background:
     radial-gradient(
       28rem 22rem at 7% -8%,
-      rgba(222, 90, 42, 0.19) 0%,
-      rgba(222, 90, 42, 0) 74%
+      rgba(44, 160, 0, 0.19) 0%,
+      rgba(44, 160, 0, 0) 74%
     ),
     radial-gradient(
       20rem 20rem at 92% 0%,
-      rgba(121, 209, 90, 0.13) 0%,
-      rgba(121, 209, 90, 0) 72%
+      rgba(44, 160, 0, 0.13) 0%,
+      rgba(44, 160, 0, 0) 72%
     ),
     radial-gradient(
       30rem 30rem at 50% 110%,
-      rgba(134, 112, 190, 0.16) 0%,
-      rgba(134, 112, 190, 0) 72%
+      rgba(44, 160, 0, 0.16) 0%,
+      rgba(44, 160, 0, 0) 72%
     );
 }
 
@@ -222,19 +222,19 @@ select {
   height: 0.5rem;
   border-radius: 50%;
   background: var(--accent-lime);
-  box-shadow: 0 0 0 rgba(121, 209, 90, 0.4);
+  box-shadow: 0 0 0 rgba(44, 160, 0, 0.4);
   animation: livePulse 2s ease-in-out infinite;
 }
 
 @keyframes livePulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(121, 209, 90, 0.5);
+    box-shadow: 0 0 0 0 rgba(44, 160, 0, 0.5);
   }
   75% {
-    box-shadow: 0 0 0 10px rgba(121, 209, 90, 0);
+    box-shadow: 0 0 0 10px rgba(44, 160, 0, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(121, 209, 90, 0);
+    box-shadow: 0 0 0 0 rgba(44, 160, 0, 0);
   }
 }
 
@@ -281,3 +281,4 @@ select {
     transition: none !important;
   }
 }
+

@@ -30,7 +30,7 @@ export const radioConfig: RadioConfig = {
   stationhead: {
     roomName: "@dmaskzify",
     deepLink: "stationhead://room/dmaskzify",
-    browserLink: "https://share.stationhead.com/dmaskzify",
+    browserLink: "https://share.stationhead.com/dlfi3u0wp8xn",
     embedSupported: false,
     embedUrl: "",
   },
@@ -136,3 +136,4 @@ export function getRadioSourceLinks() {
     fallbackLabel: "Fallback: open in browser",
   };
 }
+
