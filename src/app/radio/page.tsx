@@ -10,6 +10,9 @@ import styles from "./radio.module.css";
 export const metadata: Metadata = {
   title: "Radio",
   description: "DMASKZIFY Radio on Stationhead with weekly programming.",
+  alternates: {
+    canonical: "/radio",
+  },
 };
 
 const replayArchive = [

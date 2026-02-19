@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Backstage",
   description:
     "The private DMASKZIFY artist layer for collaboration, profile building, and support tools.",
+  alternates: {
+    canonical: "/backstage",
+  },
 };
 
 const workflow = [

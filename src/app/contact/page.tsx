@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact DMASKZIFY and submit artist information for future programming and collaborations.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

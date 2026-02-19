@@ -4,6 +4,9 @@ import styles from "./about.module.css";
 export const metadata: Metadata = {
   title: "About",
   description: "Mission, vision, and Abuja-first philosophy behind DMASKZIFY.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const principles = [

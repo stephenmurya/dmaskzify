@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCaptureForm } from "@/components/EmailCaptureForm";
 import {
@@ -7,6 +8,13 @@ import {
   radioConfig,
 } from "@/config/radio";
 import styles from "./home.module.css";
+
+export const metadata: Metadata = {
+  title: "Home",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const featuredArtists = [
   {

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Community",
   description:
     "Abuja creatives, events, culture stories, and fan energy around DMASKZIFY.",
+  alternates: {
+    canonical: "/community",
+  },
 };
 
 const creatives = [
