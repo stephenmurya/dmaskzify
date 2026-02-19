@@ -21,10 +21,20 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-headline), sans-serif;
   font-size: clamp(1.4rem, 3vw, 1.8rem);
   letter-spacing: 0.06em;
   color: var(--text-main);
+}
+
+.brandLogo {
+  width: 1.7rem;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
 }
 
 .brandCopy {

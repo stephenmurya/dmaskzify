@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   },
   description:
     "DMASKZIFY is an Abuja-first digital radio and artist community where underground voices meet a live, youth-driven urban culture.",
+  icons: {
+    icon: "/dmaskzify_favicon.png",
+    shortcut: "/dmaskzify_favicon.png",
+    apple: "/dmaskzify_favicon.png",
+  },
 };
 
 export default function RootLayout({

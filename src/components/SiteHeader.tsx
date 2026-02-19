@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { getRadioSourceLinks, getRadioStatusCopy } from "@/config/radio";
 import styles from "./SiteHeader.module.css";
@@ -37,7 +38,14 @@ export function SiteHeader() {
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.brand} onClick={() => setMenuOpen(false)}>
-          <span className={styles.brandMark} aria-hidden />
+          <Image
+            src="/dmaskzify_logo.svg"
+            alt="DMASKZIFY logo"
+            width={30}
+            height={31}
+            className={styles.brandLogo}
+            priority
+          />
           <span className={styles.brandName}>DMASKZIFY</span>
         </Link>
 

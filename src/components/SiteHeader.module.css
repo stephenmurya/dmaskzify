@@ -23,15 +23,11 @@
   color: var(--text-main);
 }
 
-.brandMark {
-  width: 1.4rem;
-  height: 1.4rem;
-  border-radius: 0.38rem;
-  background: linear-gradient(
-    145deg,
-    var(--accent-fire) 0%,
-    color-mix(in srgb, var(--accent-fire), #fff 15%) 100%
-  );
+.brandLogo {
+  width: 1.5rem;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
 }
 
 .brandName {

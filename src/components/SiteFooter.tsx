@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { EmailCaptureForm } from "./EmailCaptureForm";
 import styles from "./SiteFooter.module.css";
 
@@ -41,7 +42,14 @@ export function SiteFooter() {
       <div className={`container ${styles.layout}`}>
         <div className={styles.brandBlock}>
           <Link href="/" className={styles.brand}>
-            DMASKZIFY
+            <Image
+              src="/dmaskzify_logo.svg"
+              alt="DMASKZIFY logo"
+              width={34}
+              height={36}
+              className={styles.brandLogo}
+            />
+            <span>DMASKZIFY</span>
           </Link>
           <p className={styles.brandCopy}>
             Abuja-first digital radio and artist community for youth culture,
@@ -81,8 +89,9 @@ export function SiteFooter() {
       </div>
 
       <div className={`container ${styles.bottom}`}>
-        <p>© {new Date().getFullYear()} DMASKZIFY. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} DMASKZIFY. All rights reserved.</p>
       </div>
     </footer>
   );
 }
+
