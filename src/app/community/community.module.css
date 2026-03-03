@@ -10,6 +10,7 @@
 }
 
 .creativeCard {
+  display: block;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-m);
   overflow: hidden;

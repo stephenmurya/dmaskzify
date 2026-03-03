@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { appleMusicLinkProps, artists } from "@/config/artists";
 import styles from "./backstage.module.css";
 
 export const metadata: Metadata = {
@@ -29,33 +30,9 @@ const workflow = [
   },
 ];
 
-const artistMockups = [
-  {
-    name: "Nneka Soul",
-    role: "Singer and songwriter",
-    tags: "Alt, Soul Trap, Live vocal sessions",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Tunde X",
-    role: "Producer and performer",
-    tags: "Afrobeat, Percussion-led sets, Collaborative edits",
-    image:
-      "https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Ada Prism",
-    role: "Visual artist",
-    tags: "Live visuals, Cover direction, Event identity",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80",
-  },
-];
-
 function styleFromImage(image: string): CSSProperties {
   return {
-    backgroundImage: `linear-gradient(180deg, rgba(10, 10, 14, 0.22) 0%, rgba(10, 10, 14, 0.84) 82%), url(${image})`,
+    backgroundImage: `linear-gradient(180deg, rgba(10, 10, 14, 0.22) 0%, rgba(10, 10, 14, 0.84) 82%), url("${image}")`,
   };
 }
 
@@ -116,16 +93,21 @@ export default function BackstagePage() {
           </div>
 
           <div className={styles.mockupGrid}>
-            {artistMockups.map((artist) => (
+            {artists.map((artist) => (
               <article key={artist.name} className={styles.mockupCard}>
                 <div className={styles.mockupVisual} style={styleFromImage(artist.image)} />
                 <div className={styles.mockupBody}>
                   <h3>{artist.name}</h3>
-                  <p className={styles.role}>{artist.role}</p>
-                  <p className={styles.tags}>{artist.tags}</p>
-                  <button type="button" className="button button-secondary" disabled>
-                    Subscribe to Support (Coming Soon)
-                  </button>
+                  <p className={styles.role}>{artist.projectLabel}</p>
+                  <p className={styles.tags}>Listen on Apple Music</p>
+                  <a
+                    href={artist.appleMusicUrl}
+                    className="button button-secondary"
+                    aria-label={`Open ${artist.name} on Apple Music`}
+                    {...appleMusicLinkProps}
+                  >
+                    View on Apple Music
+                  </a>
                 </div>
               </article>
             ))}

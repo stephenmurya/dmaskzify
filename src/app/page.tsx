@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EmailCaptureForm } from "@/components/EmailCaptureForm";
+import { appleMusicLinkProps, artists } from "@/config/artists";
 import {
   getRadioSourceLinks,
   getRadioStatusCopy,
@@ -15,41 +16,6 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 };
-
-const featuredArtists = [
-  {
-    name: "Tunde X",
-    vibe: "Afrobeat",
-    summary: "Raw kinetic sets carried by live percussion loops.",
-    tracks: "12 tracks",
-    image:
-      "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Nneka Soul",
-    vibe: "Alt",
-    summary: "Soul-driven hooks with trap textures and warm synth beds.",
-    tracks: "8 tracks",
-    image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "DJ K-Slaw",
-    vibe: "House",
-    summary: "Late-night drum architecture for dense city movement.",
-    tracks: "Live sets",
-    image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Abuja Collective",
-    vibe: "Jazz Fusion",
-    summary: "Experimental arrangements from the capital's inner scenes.",
-    tracks: "3 albums",
-    image:
-      "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80",
-  },
-];
 
 const communityFrames = [
   {
@@ -74,7 +40,7 @@ const communityFrames = [
 
 function imageStyle(image: string): CSSProperties {
   return {
-    backgroundImage: `linear-gradient(180deg, rgba(10, 10, 14, 0.22) 0%, rgba(10, 10, 14, 0.88) 85%), url(${image})`,
+    backgroundImage: `linear-gradient(180deg, rgba(10, 10, 14, 0.22) 0%, rgba(10, 10, 14, 0.88) 85%), url("${image}")`,
   };
 }
 
@@ -197,16 +163,22 @@ export default function HomePage() {
           </div>
 
           <div className={styles.artistGrid}>
-            {featuredArtists.map((artist) => (
-              <article key={artist.name} className={styles.artistCard}>
+            {artists.map((artist) => (
+              <a
+                key={artist.name}
+                href={artist.appleMusicUrl}
+                className={styles.artistCard}
+                aria-label={`Open ${artist.name} on Apple Music`}
+                {...appleMusicLinkProps}
+              >
                 <div className={styles.artistImage} style={imageStyle(artist.image)} />
                 <div className={styles.artistBody}>
-                  <p className={styles.artistVibe}>{artist.vibe}</p>
+                  <p className={styles.artistVibe}>{artist.projectLabel}</p>
                   <h3>{artist.name}</h3>
-                  <p>{artist.summary}</p>
-                  <small>{artist.tracks}</small>
+                  <p>Open the Apple Music profile to explore available releases.</p>
+                  <small>Listen on Apple Music</small>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
 

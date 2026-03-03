@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { appleMusicLinkProps, artists } from "@/config/artists";
 import styles from "./community.module.css";
 
 export const metadata: Metadata = {
@@ -11,33 +12,6 @@ export const metadata: Metadata = {
     canonical: "/community",
   },
 };
-
-const creatives = [
-  {
-    name: "Nneka Soul",
-    role: "Singer / Songwriter",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "DJ K-Slaw",
-    role: "DJ / Curator",
-    image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Tunde X",
-    role: "Producer / Performer",
-    image:
-      "https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Ada Prism",
-    role: "Visual Director",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80",
-  },
-];
 
 const upcomingEvents = [
   {
@@ -98,7 +72,7 @@ const fanFrames = [
 
 function imageStyle(image: string): CSSProperties {
   return {
-    backgroundImage: `linear-gradient(180deg, rgba(10, 10, 14, 0.2) 0%, rgba(10, 10, 14, 0.88) 82%), url(${image})`,
+    backgroundImage: `linear-gradient(180deg, rgba(10, 10, 14, 0.2) 0%, rgba(10, 10, 14, 0.88) 82%), url("${image}")`,
   };
 }
 
@@ -128,14 +102,20 @@ export default function CommunityPage() {
           </div>
 
           <div className={styles.creativesGrid}>
-            {creatives.map((artist) => (
-              <article key={artist.name} className={styles.creativeCard}>
+            {artists.map((artist) => (
+              <a
+                key={artist.name}
+                href={artist.appleMusicUrl}
+                className={styles.creativeCard}
+                aria-label={`Open ${artist.name} on Apple Music`}
+                {...appleMusicLinkProps}
+              >
                 <div className={styles.creativeImage} style={imageStyle(artist.image)} />
                 <div className={styles.creativeBody}>
                   <h3>{artist.name}</h3>
-                  <p>{artist.role}</p>
+                  <p>{artist.projectLabel}</p>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
         </div>
